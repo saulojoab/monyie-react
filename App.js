@@ -1,6 +1,7 @@
 import React, {useStates, useState} from 'react';
-import {View,  StyleSheet, Dimensions} from 'react-native';
+import {View,  StyleSheet, Dimensions, Image} from 'react-native';
 import { Container, Button, Text, Item, Input, Icon, Toast, Root } from 'native-base';
+import logo from './assets/img/MONIYElogo.png';
 
 export default function App(){
   const [email, setEmail] = useState('');
@@ -8,12 +9,18 @@ export default function App(){
 
   const authenticate = () => {
     if (email === 'oksaulo@gmail.com' && password === '123'){
-      console.warn('logou');
+      Toast.show({
+        text: 'Autenticado com sucesso!',
+        buttonText: 'Entendi',
+        duration: 3000,
+        position: 'bottom',
+        type: 'success'
+      });
     } else {
       Toast.show({
         text: 'Algum dos seus dados está incorreto!',
         buttonText: 'Entendi',
-        duration: 5000,
+        duration: 3000,
         position: 'bottom',
         type: 'danger'
       });
@@ -23,8 +30,8 @@ export default function App(){
   return (
     <Root>
     <Container style={styles.container}>
-      <View style={{flex: 0.2, justifyContent: 'flex-end'}}>
-        <Text style={{color: '#00BE68', fontWeight: 'bold', fontSize: 30, textAlign: 'center'}}>Monyie</Text>
+      <View style={{flex: 0.2, justifyContent: 'flex-end',}}>
+        <Image source={logo} style={{width: 300, height: 60}}/>
       </View>
       <View style={{textAlign: 'left', flex: 0.3, justifyContent: 'center', width: Dimensions.get('screen').width * 0.7,}}>
         <Text style={{color: '#00BE68', fontWeight: '100', fontSize: 30, fontFamily: 'Roboto'}}>SEJA BEM-VINDO{email === 'oksaulo@gmail.com' ? ',' : ''}</Text>
@@ -43,7 +50,7 @@ export default function App(){
             />
           </Item>
           
-          <Item style={{marginTop: 15, borderBottomColor: '#383838'}}>
+          <Item style={{marginTop: 15, borderBottomColor: '#383838',}}>
             <Icon active name='ios-lock' style={{color: "#00BE68"}} />
             <Input 
               secureTextEntry 
@@ -59,6 +66,7 @@ export default function App(){
           success 
           style={{marginTop: 15, width: 100, justifyContent: 'center', alignSelf: 'center'}}
           onPress={() => authenticate()}
+          bordered
           >
             <Text>Entrar</Text>
           </Button>
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto'
   },
   formContainer: {
-    width: Dimensions.get('screen').width * 0.7,
+    width: Dimensions.get('screen').width * 0.8,
     flex: 0.5,
     fontFamily: 'Roboto'
   }
