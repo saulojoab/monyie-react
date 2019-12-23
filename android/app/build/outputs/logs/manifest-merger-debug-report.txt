@@ -5,6 +5,8 @@ INJECTED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src
 INJECTED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src/main/AndroidManifest.xml:1:1-27:12
 INJECTED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src/main/AndroidManifest.xml:1:1-27:12
 MERGED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src/main/AndroidManifest.xml:1:1-27:12
+MERGED from [:react-native-gesture-handler] /home/saulo/Projetos/PersonalProjects/monyie-react/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] /home/saulo/Projetos/PersonalProjects/monyie-react/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.61.5] /root/.gradle/caches/transforms-2/files-2.1/18e9134adbe3375a0a9cf46cfb06d6a7/AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] /root/.gradle/caches/transforms-2/files-2.1/09dcdb546045a0f31e181faf3ce0b41d/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] /root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/AndroidManifest.xml:17:1-22:12
@@ -16,6 +18,7 @@ MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /root/.gradle/caches/trans
 MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/8f98402010d49bcd63e397d3105ce158/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/c28b52d38c1af0f179ad60a9cbabe7e3/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.6.0] /root/.gradle/caches/transforms-2/files-2.1/710dc9ac5d03859489d034fe92f42eff/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.transition:transition:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/0ced8bde8bb8d2d510b29a62dff04da4/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/cd3518f279fa80f49ca3c113b01b48c5/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/cc986e048907d417b8972976ceaabb51/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/1a19d299f0b6ef4041e9065397427e4c/AndroidManifest.xml:17:1-22:12
@@ -134,6 +137,10 @@ uses-sdk
 INJECTED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/saulo/Projetos/PersonalProjects/monyie-react/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-gesture-handler] /home/saulo/Projetos/PersonalProjects/monyie-react/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /home/saulo/Projetos/PersonalProjects/monyie-react/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /home/saulo/Projetos/PersonalProjects/monyie-react/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /home/saulo/Projetos/PersonalProjects/monyie-react/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.5] /root/.gradle/caches/transforms-2/files-2.1/18e9134adbe3375a0a9cf46cfb06d6a7/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.5] /root/.gradle/caches/transforms-2/files-2.1/18e9134adbe3375a0a9cf46cfb06d6a7/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /root/.gradle/caches/transforms-2/files-2.1/09dcdb546045a0f31e181faf3ce0b41d/AndroidManifest.xml:7:5-9:41
@@ -156,6 +163,8 @@ MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /root/.gradle/caches/
 MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/c28b52d38c1af0f179ad60a9cbabe7e3/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.6.0] /root/.gradle/caches/transforms-2/files-2.1/710dc9ac5d03859489d034fe92f42eff/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.6.0] /root/.gradle/caches/transforms-2/files-2.1/710dc9ac5d03859489d034fe92f42eff/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.transition:transition:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/0ced8bde8bb8d2d510b29a62dff04da4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/0ced8bde8bb8d2d510b29a62dff04da4/AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/cd3518f279fa80f49ca3c113b01b48c5/AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/cd3518f279fa80f49ca3c113b01b48c5/AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/cc986e048907d417b8972976ceaabb51/AndroidManifest.xml:20:5-44

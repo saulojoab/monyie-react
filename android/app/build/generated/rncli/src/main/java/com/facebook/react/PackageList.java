@@ -11,7 +11,13 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+import com.monyiereact.BuildConfig;
+import com.monyiereact.R;
 
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-reanimated
+import com.swmansion.reanimated.ReanimatedPackage;
 
 public class PackageList {
   private Application application;
@@ -56,7 +62,9 @@ public class PackageList {
 
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
-      new MainReactPackage(mConfig)
+      new MainReactPackage(mConfig),
+      new RNGestureHandlerPackage(),
+      new ReanimatedPackage()
     ));
   }
 }

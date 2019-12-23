@@ -1,4 +1,4 @@
-#Mon Dec 23 11:56:05 BRT 2019
+#Mon Dec 23 13:19:51 BRT 2019
 base.0=/home/saulo/Projetos/PersonalProjects/monyie-react/android/app/build/intermediates/transforms/dexMerger/debug/0
 renamed.0=classes.dex
 path.0=classes.dex

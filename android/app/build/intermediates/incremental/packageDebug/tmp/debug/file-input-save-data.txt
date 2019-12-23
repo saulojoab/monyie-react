@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Dec 23 11:56:05 BRT 2019
+#Mon Dec 23 13:19:52 BRT 2019
 70.path=lib/x86_64/libfb.so
 64.base=/home/saulo/Projetos/PersonalProjects/monyie-react/android/app/build/intermediates/merged_assets/debug/out
 47.base=/home/saulo/Projetos/PersonalProjects/monyie-react/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
