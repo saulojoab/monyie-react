@@ -6,12 +6,12 @@ import Home from './home';
 import Cart from './cart';
 
 
-const initialLayout = { width: Dimensions.get('window').width };
+const initialLayout = { width: Dimensions.get('window').width};
 
 export default function TabViewExample() {
   const [index, setIndex] = React.useState(1);
   const [routes] = React.useState([
-    { key: 'first', title: 'Carrinho' },
+    { key: 'first', title: 'Carrinho'},
     { key: 'second', title: 'Início' },
   ]);
 
@@ -23,11 +23,12 @@ export default function TabViewExample() {
   return (
     <TabView
       navigationState={{ index, routes }}
-      renderTabBar={props => <TabBar indicatorStyle={{backgroundColor: 'white'}} style={{backgroundColor: '#00BE68'}} {...props}/>}
+      renderTabBar={props => <TabBar indicatorStyle={{backgroundColor: '#1C1C1C'}} style={{backgroundColor: '#00BE68', color: '#1C1C1C'}} {...props}/>}
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={initialLayout}
       tabBarPosition="bottom"
+      style={{color: '#1C1C1C'}}
       swipeEnabled
     />
   );
