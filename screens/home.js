@@ -1,7 +1,8 @@
-import React, {useStates, useState} from 'react';
+import React, {useState} from 'react';
 import {View,  StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native';
 import { Container, Button, Text, Item, Input, Icon, Toast, Root } from 'native-base';
-import logo from './../assets/img/MONIYElogo.png';
+
+import Header from './../components/home/header';
 
 export default function Home(){
   const [email, setEmail] = useState('');
@@ -9,11 +10,9 @@ export default function Home(){
 
 
   return (
-    <Root>
     <Container style={styles.container}>
-      <Text>OKNOTOK</Text>
+      <Header/>
     </Container>
-    </Root>
   )
 }
 
@@ -23,8 +22,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     height: Dimensions.get('screen').height,
     backgroundColor: '#1C1C1C',
-    padding: 20,
     alignItems: 'center',
-    fontFamily: 'Roboto'
   },
 })

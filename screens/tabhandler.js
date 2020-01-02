@@ -3,17 +3,21 @@ import { Dimensions, View, Text } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 import Home from './home';
+import Cart from './cart';
+
 
 const initialLayout = { width: Dimensions.get('window').width };
 
 export default function TabViewExample() {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(1);
   const [routes] = React.useState([
-    { key: 'first', title: 'Início' },
+    { key: 'first', title: 'Carrinho' },
+    { key: 'second', title: 'Início' },
   ]);
 
   const renderScene = SceneMap({
-    first: Home,
+    first: Cart,
+    second: Home,
   });
 
   return (
@@ -24,6 +28,7 @@ export default function TabViewExample() {
       onIndexChange={setIndex}
       initialLayout={initialLayout}
       tabBarPosition="bottom"
+      swipeEnabled
     />
   );
 }

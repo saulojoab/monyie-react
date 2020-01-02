@@ -1,6 +1,6 @@
 import React, {useStates, useState} from 'react';
 import {View,  StyleSheet, Dimensions, Image, TouchableOpacity} from 'react-native';
-import { Container, Button, Text, Item, Input, Icon, Toast, Root } from 'native-base';
+import { Container, Button, Text, Item, Input, Icon, Toast } from 'native-base';
 import logo from './../assets/img/MONIYElogo.png';
 
 export default function Login(props){
@@ -30,7 +30,6 @@ export default function Login(props){
   };
 
   return (
-    <Root>
     <Container style={styles.container}>
       <View style={{flex: 0.2, justifyContent: 'flex-end',}}>
         <Image source={logo} style={{width: 300, height: 60}}/>
@@ -78,7 +77,6 @@ export default function Login(props){
           </TouchableOpacity>
       </View>
     </Container>
-    </Root>
   )
 }
 
