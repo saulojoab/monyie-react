@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#383838',
         width: Dimensions.get('screen').width,
-        flex: 0.15,
+        flex: 0.12,
         alignItems: 'center',
         paddingLeft: 20
     },
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         color: '#00BE68',
         alignSelf: 'flex-end'
     },
-        iconContainer: {
+    iconContainer: {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 0.2,
