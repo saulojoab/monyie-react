@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View,  StyleSheet, Dimensions, Modal, Text, TouchableOpacity} from 'react-native';
+import {View,  StyleSheet, Dimensions, Modal, Text, TouchableOpacity, Animated, ScrollView} from 'react-native';
 import { Container, Row, Col, Icon, Item, Input, Button, Picker } from 'native-base';
 
 import Header from './../components/cart/header';
@@ -12,11 +12,7 @@ export default function Cart(){
   const [name, setName] = useState('');
   const [qtd, setQtd] = useState(0);
   const [type, setType] = useState(-1);
-  const [items, setItems] = useState([{
-    name: 'a',
-    qtd: 1,
-    type: 1
-  }]);
+  const [items, setItems] = useState([]);
 
   const addNewItem = () => {
     if (name === '' || qtd === 0 || type == -1)
@@ -44,7 +40,7 @@ export default function Cart(){
       visible={addItem}
       onRequestClose={()=> setAddItem(false)}
       >
-        <View style={{width: '100%', height: 780, backgroundColor: 'rgba(0,0,0,0.6)'}}>
+        <View style={{width: '100%', height: Dimensions.get('screen').height, display: 'flex', flexDirection: 'column', backgroundColor: 'rgba(0,0,0,0.6)'}}>
           <Container style={styles.modalContainer}>
             <Row style={styles.modalHeader}>
               <Col style={{flex: 0.9}}>
@@ -71,7 +67,7 @@ export default function Cart(){
                     onChangeText={(t) => setName(t)}
                   />
                 </Item>
-                <Item style={{borderBottomColor: '#00BE68', marginTop: 15}}>
+                <Item style={{borderBottomColor: '#00BE68', marginTop: 20}}>
                   <Icon active name='cubes' type='FontAwesome5' style={{color: "#00BE68"}} />
                   <Input 
                     keyboardType="number-pad" 
@@ -98,35 +94,46 @@ export default function Cart(){
                     <Picker.Item label="Conforto" value="4" />
                   </Picker>
                 </Item>
+                <View style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
+                  <Button 
+                    success 
+                    style={{width: 130, margin: 5, justifyContent: 'center', borderRadius: 15}}
+                    onPress={() => addNewItem()}
+                  >
+                    <Text style={{fontFamily: 'Roboto-Light', fontSize: 18}}>Adicionar</Text>
+                  </Button>
+                  <Button 
+                    danger 
+                    style={{width: 130, margin: 5, justifyContent: 'center', borderRadius: 15}}
+                    onPress={() => setAddItem(false)}
+                  >
+                    <Text style={{fontFamily: 'Roboto-Light', fontSize: 18}}>Cancelar</Text>
+                  </Button>
+                </View>
+                
               </Col>
-            </Row>
-            <Row style={{flex: 0.19, alignItems: 'center', justifyContent: 'center'}}>
-              <Button 
-                success 
-                style={{width: 130, margin: 5, justifyContent: 'center', borderRadius: 15}}
-                onPress={() => addNewItem()}
-              >
-                <Text style={{fontFamily: 'Roboto-Light', fontSize: 18}}>Adicionar</Text>
-              </Button>
-              <Button 
-                danger 
-                style={{width: 130, margin: 5, justifyContent: 'center', borderRadius: 15}}
-                onPress={() => setAddItem(false)}
-              >
-                <Text style={{fontFamily: 'Roboto-Light', fontSize: 18}}>Cancelar</Text>
-              </Button>
             </Row>
           </Container>
         </View>
       </Modal>
-
+      <Header addItemPressed={() => setAddItem(true)}/>
       <Container style={styles.container}>
-        <Header addItemPressed={() => setAddItem(true)}/>
-        {items.map((i) => {
-          return(
-            <ItemContainer name={name} qtd={qtd} type={type}/>
-          )
-        })}
+          <ScrollView style={{width: Dimensions.get('screen').width}}>
+          {items.length > 0 ? items.map((i) => {
+            return(
+              <ItemContainer name={i.name} qtd={i.qtd} type={i.type}/>
+            )
+          }
+        ) : 
+        <View style={{padding: 20, justifyContent: 'center', flex: 0.85}}>
+          <Text style={{color: '#00BE68', fontFamily: 'Roboto-Thin', fontSize: 40}}>Sua lista de compras está <Text style={{color: '#00BE68', fontFamily: 'Roboto-Black', fontSize: 40}}>vazia</Text>.</Text>
+          <Text style={{color: '#00BE68', fontFamily: 'Roboto-Thin', fontSize: 40, textAlign: 'right', marginTop: 30}}>Adicione novos items <Text style={{color: '#00BE68', fontFamily: 'Roboto-Black', fontSize: 40}}>lá em cima</Text>.</Text>
+        </View>}
+
+        {items.length > 0 ? (
+          <View><Text>Preço total: R$0.0</Text></View>
+        ) : <></>}
+        </ScrollView>
       </Container>
     </>
   )
@@ -139,26 +146,23 @@ const styles = StyleSheet.create({
     height: Dimensions.get('screen').height,
     backgroundColor: '#1C1C1C',
     alignItems: 'center',
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
   },
   modalContainer: {
     width: '80%',
-    height: '100%',
+    height: Dimensions.get('screen').height,
     backgroundColor: '#2D2D2D',
     alignSelf: 'center',
     margin: 100,
-    borderRadius: 15
+    borderRadius: 15,
   },
   modalHeader: {
     backgroundColor: '#00BE68',
-    flex: 0.1,
+    height: 60,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15
   },
-  modalContent: {
-    flex: 1
-  }
 })

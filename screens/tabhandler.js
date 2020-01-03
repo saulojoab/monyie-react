@@ -23,7 +23,7 @@ export default function TabViewExample() {
   return (
     <TabView
       navigationState={{ index, routes }}
-      renderTabBar={props => <TabBar indicatorStyle={{backgroundColor: '#1C1C1C'}} style={{backgroundColor: '#00BE68', color: '#1C1C1C'}} {...props}/>}
+      renderTabBar={props => <TabBar indicatorStyle={{backgroundColor: '#1C1C1C'}} style={{backgroundColor: '#00BE68', color: '#1C1C1C', elevation: 20}} {...props}/>}
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={initialLayout}

@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#383838',
         width: Dimensions.get('screen').width,
-        flex: 0.08,
+        flex: 0.09,
         alignItems: 'center',
-        height: 30,
+        height: 40,
+        elevation: 20
     },
     photo: {
         justifyContent: 'center',
