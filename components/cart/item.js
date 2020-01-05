@@ -4,6 +4,7 @@ import {Icon} from 'native-base';
 
 export default function ItemContainer(props) {
     const [icon, setIcon] = useState(null);
+    const [color, setColor] = useState(null);
 
     useEffect(() => {
         var icons = {
@@ -14,19 +15,30 @@ export default function ItemContainer(props) {
             4: "couch"
         }
 
+        var colorList = {
+            0: '#BEB66E',
+            1: '#66B3CF',
+            2: '#C2FF91',
+            3: 'lightblue',
+            4: '#81C380'
+        }
+
         setIcon(icons[props.type]);
+        setColor(colorList[props.type]);
     }, [])
 
     return (
-        <TouchableOpacity style={styles.container}>
-            <View style={{flex: 0.1, borderRightWidth: 2, paddingRight: 5}}>
-                <Icon type="FontAwesome5" style={{color: '#00361D'}} name={icon}/>
+        <TouchableOpacity onLongPress={props.onLongPress} style={[styles.container, {backgroundColor: color}]}>
+            <View style={{flex: 0.15, borderRightWidth: 2, paddingRight: 5, height: '70%', alignItems: 'center'}}>
+                <View style={{flex: 1, justifyContent: 'center'}}>
+                    <Icon type="FontAwesome5" style={{color: '#00361D'}} name={icon}/>
+                </View>
             </View>
-            <View style={{flex: 0.6, padding: 10, flexDirection: 'row', alignItems: 'center'}}>
-                <Text style={{color: '#00361D', fontSize: 25, fontFamily: 'Roboto-Black'}}>{props.name}</Text>
-                <Text style={{color: '#00361D', fontSize: 20, fontFamily: 'Roboto-Thin', paddingLeft: 5, paddingRight: 10}}>(x{props.qtd})</Text>
+            <View style={{flex: 0.7, padding: 10, flexDirection: 'column', alignItems: 'center', justifyContent: "center"}}>
+                <Text style={{color: '#00361D', fontSize: 25, fontFamily: 'Roboto-Black', flex: 0.7, textAlign: 'center'}}>{props.name}</Text>
+                <Text style={{color: '#00361D', fontSize: 20, fontFamily: 'Roboto-Thin', flex: 0.3, textAlign: 'center'}}>(x{props.qtd})</Text>
             </View>
-            <View style={{flex: 0.4, display: 'flex', flexDirection: 'column'}}>
+            <View style={{flex: 0.3, display: 'flex', flexDirection: 'column', borderLeftWidth: 2, padding: 10}}>
                 <>
                 <Text style={{textAlign: 'center', fontFamily: 'Roboto-Black'}}>PREÇO PROVÁVEL:</Text>
                 <Text style={{textAlign: 'center', fontFamily: 'Roboto-Light'}}>Não disponível ainda</Text>
@@ -39,7 +51,6 @@ export default function ItemContainer(props) {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: '#00D072',
         display: 'flex',
         flexDirection: 'row',
         padding: 10,

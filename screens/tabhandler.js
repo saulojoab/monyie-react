@@ -6,7 +6,7 @@ import Home from './home';
 import Cart from './cart';
 
 
-const initialLayout = { width: Dimensions.get('window').width};
+const initialLayout = { width: Dimensions.get('window').width, height: Dimensions.get('screen').height };
 
 export default function TabViewExample() {
   const [index, setIndex] = React.useState(1);

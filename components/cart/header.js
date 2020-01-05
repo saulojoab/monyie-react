@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#383838',
         width: Dimensions.get('screen').width,
-        flex: 0.09,
+        flex: 0.1,
         alignItems: 'center',
         height: 40,
         elevation: 20

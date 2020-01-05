@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {View,  StyleSheet, Dimensions, Modal, Text, TouchableOpacity, Animated, ScrollView} from 'react-native';
-import { Container, Row, Col, Icon, Item, Input, Button, Picker } from 'native-base';
+import React, {useState, useEffect} from 'react';
+import {View,  StyleSheet, Dimensions, Modal, Text, TouchableOpacity, Animated, ScrollView, AsyncStorage} from 'react-native';
+import { Container, Row, Col, Icon, Item, Input, Button, ActionSheet, Picker, Toast } from 'native-base';
 
 import Header from './../components/cart/header';
 import ItemContainer from './../components/cart/item';
@@ -14,22 +14,104 @@ export default function Cart(){
   const [type, setType] = useState(-1);
   const [items, setItems] = useState([]);
 
+  useEffect(() => {
+    if (AsyncStorage.getItem('list')) {
+      console.warn(AsyncStorage.getItem('list'));
+      //setItems(JSON.parse(AsyncStorage.getItem('list')));   
+    }
+  }, [])
+
+  const firstLettersUppercase = (word) => {
+    const upper = (word.charAt(0).toUpperCase()) + word.slice(1);
+    return upper;
+  }
+
   const addNewItem = () => {
     if (name === '' || qtd === 0 || type == -1)
     {
-      console.warn("Missing data");
+      Toast.show({
+        text: 'Alguns dados estão faltando!',
+        buttonText: 'Entendi',
+        duration: 3000,
+        position: 'bottom',
+        type: 'danger'
+      });
     } 
     else 
     {
+      const words = name.split(' ');
+      let newName = "";
+      words.map((w, idx) => {
+        if (w !== "de"){
+          let word = firstLettersUppercase(w);
+          if (idx !== words.length){
+            word = word + " ";
+          }
+          newName = newName + word;
+        }
+      });
+
       const obj = {
-        name: name,
+        name: newName,
         qtd: qtd,
         type: type
       }
 
       setItems([...items, obj]);
-      console.warn(items);
     }
+  }
+
+  const removeItem = (i) => {
+    ActionSheet.show(
+      {
+        options: [
+          { text: "Sim, quero remover", icon: "ios-checkmark-circle", iconColor: "#2c8ef4" },
+          { text: "Não, cancela", icon: "close", iconColor: "#25de5b" }
+        ],
+        cancelButtonIndex: 1,
+        destructiveButtonIndex: 1,
+        title: "Deseja remover esse item?"
+      },
+      buttonIndex => {
+        if (buttonIndex == 0) {
+          const itemsArray = items;
+          setItems(itemsArray.filter(it => it !== i));
+          Toast.show({
+            text: 'Item removido com Sucesso!',
+            buttonText: 'Entendi',
+            duration: 3000,
+            position: 'bottom',
+            type: 'success'
+          });
+        }
+      }
+    )
+  }
+
+  const saveList = () => {
+      ActionSheet.show(
+        {
+          options: [
+            { text: AsyncStorage.getItem('list') == null ? "Sim, quero remover" : 'Sim, quero salvar', icon: "ios-checkmark-circle", iconColor: "#2c8ef4" },
+            { text: "Não, cancela", icon: "close", iconColor: "#25de5b" }
+          ],
+          cancelButtonIndex: 1,
+          destructiveButtonIndex: 1,
+          title: AsyncStorage.getItem('list') == null ? "Você quer sobrescrever a sua lista antiga?" : "Você quer realmente salvar sua lista?"
+        },
+        async buttonIndex =>  {
+          if (buttonIndex == 0) {
+            await AsyncStorage.setItem('list', JSON.stringify(items))
+            Toast.show({
+              text: 'Item removido com Sucesso!',
+              buttonText: 'Entendi',
+              duration: 3000,
+              position: 'bottom',
+              type: 'success'
+            });
+          }
+        }
+      )
   }
 
   return (
@@ -40,7 +122,7 @@ export default function Cart(){
       visible={addItem}
       onRequestClose={()=> setAddItem(false)}
       >
-        <View style={{width: '100%', height: Dimensions.get('screen').height, display: 'flex', flexDirection: 'column', backgroundColor: 'rgba(0,0,0,0.6)'}}>
+        <View style={{width: '100%', height: Dimensions.get('screen').height - 50, display: 'flex', flexDirection: 'column', backgroundColor: 'rgba(0,0,0,0.6)'}}>
           <Container style={styles.modalContainer}>
             <Row style={styles.modalHeader}>
               <Col style={{flex: 0.9}}>
@@ -116,25 +198,35 @@ export default function Cart(){
           </Container>
         </View>
       </Modal>
-      <Header addItemPressed={() => setAddItem(true)}/>
-      <Container style={styles.container}>
-          <ScrollView style={{width: Dimensions.get('screen').width}}>
+      <View style={styles.container}>
+      <Header addItemPressed={() => setAddItem(true)}/> 
+          {items.length > 0 ? (
+            <TouchableOpacity 
+            onPress={() => saveList()}
+            style={{width: Dimensions.get('screen').width * 0.7,
+            alignSelf: 'center',
+            margin: 5,
+            height: 50, backgroundColor: '#009F71', borderRadius: 5, 
+            display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 10}}>
+              <Icon type="FontAwesome5" style={{color: '#2BEEB6'}} name="save"/><Text style={{fontFamily: 'Roboto-Black', fontSize: 25, paddingLeft: 5, color: '#2BEEB6'}}>Salvar Lista</Text>
+            </TouchableOpacity>) : <></>}
+          <ScrollView style={{width: Dimensions.get('screen').width, flex: 0.9}}>
           {items.length > 0 ? items.map((i) => {
             return(
-              <ItemContainer name={i.name} qtd={i.qtd} type={i.type}/>
+              <ItemContainer onLongPress={() => removeItem(i)} name={i.name} qtd={i.qtd} type={i.type}/>
             )
           }
         ) : 
-        <View style={{padding: 20, justifyContent: 'center', flex: 0.85}}>
-          <Text style={{color: '#00BE68', fontFamily: 'Roboto-Thin', fontSize: 40}}>Sua lista de compras está <Text style={{color: '#00BE68', fontFamily: 'Roboto-Black', fontSize: 40}}>vazia</Text>.</Text>
-          <Text style={{color: '#00BE68', fontFamily: 'Roboto-Thin', fontSize: 40, textAlign: 'right', marginTop: 30}}>Adicione novos items <Text style={{color: '#00BE68', fontFamily: 'Roboto-Black', fontSize: 40}}>lá em cima</Text>.</Text>
+        <View style={{padding: 20, justifyContent: 'center', flex: 0.85, paddingTop: 200}}>
+          <Text style={{color: '#00BE68', fontFamily: 'Roboto-Thin', fontSize: 35}}>Sua lista de compras está <Text style={{color: '#00BE68', fontFamily: 'Roboto-Black', fontSize: 35}}>vazia</Text>.</Text>
+          <Text style={{color: '#00BE68', fontFamily: 'Roboto-Thin', fontSize: 35, textAlign: 'right', marginTop: 30}}>Adicione novos items <Text style={{color: '#00BE68', fontFamily: 'Roboto-Black', fontSize: 35}}>lá em cima</Text>.</Text>
         </View>}
 
         {items.length > 0 ? (
           <View><Text>Preço total: R$0.0</Text></View>
         ) : <></>}
         </ScrollView>
-      </Container>
+      </View>
     </>
   )
 }
