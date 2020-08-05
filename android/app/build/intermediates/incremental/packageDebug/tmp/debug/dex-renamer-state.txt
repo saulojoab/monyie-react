@@ -1,4 +1,4 @@
-#Tue Dec 31 05:32:13 BRT 2019
-base.0=/home/saulo/Projetos/PersonalProjects/monyie-react/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Wed Aug 05 02:27:15 GFT 2020
+base.0=C\:\\Users\\Saulo\\Desktop\\Dev\\Random\\monyie\\monyie-react\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

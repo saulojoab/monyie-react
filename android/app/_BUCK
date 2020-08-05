@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.monyiereact",
+    package = "com.monyie",
 )
 
 android_resource(
     name = "res",
-    package = "com.monyiereact",
+    package = "com.monyie",
     res = "src/main/res",
 )
 
