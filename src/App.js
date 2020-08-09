@@ -9,9 +9,10 @@ import {
   Modal,
   Dimensions,
   TouchableNativeFeedback,
+  FlatList,
 } from 'react-native';
 
-import { Input } from './components'
+import { Input, Product } from './components'
 import { Header } from './layout'
 
 import normalize from 'react-native-normalize'
@@ -68,10 +69,10 @@ export default function App() {
         </View>
       </Modal>
 
-      <Header hideRight />
+      <Header />
       
       <View style={styles.productListing}>
-
+        <Product name='Comida Teste' price='22' amount='22' />
       </View>
 
       <TouchableNativeFeedback onPress={toggleModal} background={TouchableNativeFeedback.Ripple('white')}>
